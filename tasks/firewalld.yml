@@ -1,0 +1,19 @@
+### Setup firewalld
+- name: Enable firewalld
+  service:
+    name: firewalld
+    enabled: yes
+    state: started
+
+- name: Add snmpd to the firewalld rules
+  firewalld:
+    service: snmp
+    permanent: true
+    state: enabled
+    zone: public
+    immediate: true
+
+- name: Restart firewalld
+  service:
+    name: firewalld
+    state: restarted

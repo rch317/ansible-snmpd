@@ -1,0 +1,15 @@
+### Push our config out
+- name: Create /etc/snmp/snmpd.conf
+  template:
+    src: templates/snmpd_conf.j2
+    dest: /etc/snmp/snmpd.conf
+    mode: 0600
+    force: yes
+    backup: yes
+
+### Make sure sshd is enabled and started
+- name: Enable snmpd Service
+  service:
+    name: snmpd
+    enabled: yes
+    state: restarted

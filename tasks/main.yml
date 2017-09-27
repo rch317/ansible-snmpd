@@ -1,0 +1,9 @@
+---
+- name: Install Required Packages
+  include: packages.yml
+
+- name: Configure snmpd
+  include: configure.yml
+
+- name: Firewall Rules
+  include: firewalld.yml
